@@ -1,0 +1,52 @@
+<%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/post.css">
+<%- post[0].yoast_head %>
+</head>
+
+<body> 
+<%- include('./partials/header') %>
+<main>
+  <article>
+    <h1><%- post[0].title.rendered %></h1>
+    <% if (post[0].jetpack_featured_media_url[0]) { %>
+      <img src="<%= post[0].jetpack_featured_media_url  %>" alt="">
+    <% } else { %>
+      
+    <% } %>
+
+    <div class="info">
+      <% if (category[0]) { %>
+        <a class="categorie" href="/categorie/<%= category[0].slug %>"><%- category[0].name %></a>
+      <% } %>
+
+      <span class="date"><%= post[0].date %></span>
+
+      <form action="/artikel/<%= post[0].slug %>" method="post" class="shares">
+        <input type="hidden" name="slug" value="<%= post[0].slug %>">
+        <label for="share"> <%= post[0].shares  %>x gedeeld</label>
+        <button class="deel-button" type="submit" id="share">
+          <span class="material-symbols-outlined">share_windows</span>
+          <span class="btn-label">deel</span>
+        </button>
+      </form>
+
+      <p class="notification"> Gekopieërd!</p>
+    </div>
+
+    <div class="excerpt">
+      <%- post[0].excerpt.rendered %>
+    </div>
+
+    <section class="content">
+      <div class="read-info">
+        <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
+        <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
+      </div>
+
+      <%- post[0].content.rendered %>
+    </section>
+  </article>
+</main>
+
+
+<%- include('./partials/foot') %>

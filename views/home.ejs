@@ -1,0 +1,33 @@
+<%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/home.css">
+
+<title>Red Pers</title>
+</head>
+
+<body>
+<%- include('./partials/header') %>
+
+<main>
+  <% posts.forEach(function(post) { %>
+    <article class="frontpage-card">
+      
+      <% if (post.jetpack_featured_media_url[0]) { %>
+        <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+      <% } else { %>
+        <img src="/assets/errorimg.png" alt="Kan foto niet laden">
+      <% } %>
+
+      <a href="/artikel/<%= post.slug %>">
+        <h2><%- post.title.rendered %></h2>
+      </a>
+      
+      <div class="bottom-tag">
+        <p><strong><%= post.yoast_head_json.author %></strong></p>
+        <p><%= post.yoast_head_json.twitter_misc["Geschatte leestijd"] %></p>
+        <p class="date"><%- post.date %></p>
+      </div>
+    </article>
+  <% }) %>  
+</main>
+
+<%- include('./partials/foot') %>

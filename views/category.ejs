@@ -1,0 +1,36 @@
+<%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/category.css">
+
+<%- category[0].yoast_head %>
+</head>
+
+<body>
+<%- include('./partials/header') %>
+
+<main>
+  <h2>Meer van: <%- category[0].name %></h2>
+
+  <div class="results">
+    <% if (posts[0]) { %>
+      <% posts.forEach(function(post) { %>
+        <a href="/artikel/<%= post.slug %>">
+          <article class="category-card">
+            <p class="date"><%= post.date %></p>
+      
+            <h3><%- post.title.rendered %></h3>
+            
+            <% if (post.jetpack_featured_media_url[0]) { %>
+              <img src="<%= post.jetpack_featured_media_url  %>" alt="">
+            <% } else { %>
+              <img src="/assets/errorimg.png" alt="Kan foto niet laden">
+            <% } %>
+          </article>
+        </a> 
+      <% }) %>  
+    <% } else {%>
+      <h3> Er zijn geen artiekelen</h3>
+    <% } %>
+  </div>
+</main>
+
+<%- include('./partials/foot') %>

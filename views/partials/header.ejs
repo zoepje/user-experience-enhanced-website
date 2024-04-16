@@ -1,0 +1,68 @@
+<header>
+  <ul class="service-top">
+    <li>
+      <a href="">Colofon</a>
+    </li>
+    <li>
+      <a href="">Over</a>
+    </li>
+    <li>
+      <a href="">Meedoen</a>
+    </li>
+    <li>
+      <a href="">Contact</a>
+    </li>
+  </ul>
+
+  <div class="top-bar">
+    <button class="menu-button" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" class="" aria-hidden="true">
+        <path stroke="#3C3B34" d="M2 3.5h12m-12 4h12m-12 4h12"></path>
+      </svg>
+      <span class="text">Menu</span>
+    </button>
+
+    <p><strong>Dinsdag 19 maart, 2024</strong> Podium voor de journalistiek</p>
+
+    <h1>
+      <a href="/">
+        <img src="/assets/RedPers_Logo_Black.webp" alt="Red Pers logo">
+      </a>
+    </h1>
+
+    <a class="search" href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
+        <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+      </svg>
+      <span class="text">Zoeken</span>
+    </a>
+  </div>
+
+  <nav>
+    <ul class="categories">
+      <li>
+        <a href="/">Voorpagina</a>
+      </li>
+    <% categories.forEach(function(category) { %>
+      <li>
+        <a href="/categorie/<%= category.slug %>"> <%= category.name %></a>
+      </li>
+    <% }) %> 
+    </ul>
+
+    <ul class="service">
+      <li>
+        <a href="">Colofon</a>
+      </li>
+      <li>
+        <a href="">Over</a>
+      </li>
+      <li>
+        <a href="">Meedoen</a>
+      </li>
+      <li>
+        <a href="">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</header>

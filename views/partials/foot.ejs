@@ -1,0 +1,71 @@
+    <footer>
+      <div class="footer-navigation">
+        <section class="rubieken">
+          <h4>Rubieken</h4>
+          <ul>
+            <% categories.forEach(function(category) { %>
+              <li>
+                <a href="/categorie/<%= category.slug %>"> <%= category.name %></a>
+              </li>
+            <% }) %> 
+          </ul>
+        </section>
+
+        <section class="navigeer">
+          <h4>Navigeer</h4>
+          <ul>
+            <li>
+              <a href="">Colofon</a>
+            </li>
+            <li>
+              <a href="">Contact</a>
+            </li>
+            <li>
+              <a href="">Doneren</a>
+            </li>
+            <li>
+              <a href="">Meedoen</a>
+            </li>
+            <li>
+              <a href="">Over Red Pers</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="service">
+          <h4>Service</h4>
+          <ul>
+            <li>
+              <a href="">Tip de redactie</a>
+            </li>
+            <li>
+              <a href="">Meld een fout</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="meer-red-pers">
+          <h4>Meer Red Pers</h4>
+          <ul>
+            <li>
+              <a href="">Nieuwsbrief</a>
+            </li>
+            <li>
+              <a href="">Linkedin</a>
+            </li>
+            <li>
+              <a href="">Facebook</a>
+            </li>
+            <li>
+              <a href="">Instagram</a>
+            </li>
+            <li>
+              <a href="">X (Twitter)</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+    
+  </body>
+</html>
