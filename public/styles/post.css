@@ -89,7 +89,9 @@ article .content .read-info p:nth-of-type(1){
 }
 /* #region Read-info */
 
-article .content h4, p, li{
+article .content h4, 
+article .content p,
+article .content li{
   font-size: 1.25rem;
   max-width: var(--line-length);
   line-height: var(--line-heigth);
