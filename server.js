@@ -49,9 +49,9 @@ const categoriesData = [
 
 // Maak een GET route voor de home
 app.get('/', function (request, response) {
-  //fetch alleen de velden id, date, slug, title, yoast_head_json.author, jetpack_featured_media_url
+  //fetch alleen de velden id, date, slug, title, yoast_head_json.author, yoast_head_json.og_image
   //Haal 51 per pagina op
-  fetchJson(postsUrl + '?_fields=id,date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,jetpack_featured_media_url&per_page=51').then((posts) => {
+  fetchJson(postsUrl + '?_fields=id,date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=51').then((posts) => {
   // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
   // HTML maken op basis van JSON data
 
@@ -77,9 +77,9 @@ app.get('/categorie/:slug', function (request, response) {
   const category = categoriesData.find((category) => category.slug == request.params.slug);
 
   // Doe meerdere fetchJson voor de posts en de categorie data
-  // Haal 20 posts op die deze categorie hebben en haal de velden date, slug, title, jetpack_featured_media_url uit de API
+  // Haal 20 posts op die deze categorie hebben en haal de velden date, slug, title, yoast_head_json.og_image uit de API
   // Haal deze category op met als velden name, yoast_head
-  Promise.all([fetchJson(postsUrl + '?categories=' + category.id + '&_fields=date,slug,title,jetpack_featured_media_url&per_page=20'), 
+  Promise.all([fetchJson(postsUrl + '?categories=' + category.id + '&_fields=date,slug,title,yoast_head_json.og_image,jetpack_featured_media_url&per_page=20'), 
     fetchJson(categoriesUrl + '/?slug=' + request.params.slug + '&_fields=name,yoast_head')]).then(([postData, category]) => {
     // Render catogorie.ejs uit de views map en geef de opgehaalde data mee als variabele
     // HTML maken op basis van JSON data
@@ -103,7 +103,7 @@ app.get('/categorie/:slug', function (request, response) {
 // Maak een GET route voor de post
 app.get('/artikel/:slug', function (request, response) {
    // Haal voor deze post de velden date, title, content, excerpt, categories, yoast_head, yoast_head_json.author, jetpack_featured_media_url uit de API
-  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,content,excerpt,categories,yoast_head,yoast_head_json.author,yoast_head_json.twitter_misc,jetpack_featured_media_url'), 
+  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,content,excerpt,categories,yoast_head,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url'), 
     fetchJson(categoriesUrl + '?_fields=id,name,slug&per_page=100')]).then(([postData, categoryData]) => {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
