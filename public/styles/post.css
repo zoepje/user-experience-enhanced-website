@@ -39,7 +39,8 @@ article .shares{
 }
 
 article .shares .deel-button{
-  display: grid;
+  display: flex;
+  align-items: center;
   border: 0;
   background: transparent;
   color: var(--accent-color2);
@@ -149,11 +150,11 @@ article .content ul{
 
   /* #region Deel-button */
   article .info .deel-button .btn-label{
-    display: none;
+    opacity: 0;
   }
 
   article .info .deel-button:hover .btn-label{
-    display: block;
+    opacity: 1;
   }
   /* #endregion Deel-button */
   /* #endregion Article */
