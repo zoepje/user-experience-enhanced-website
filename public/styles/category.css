@@ -49,7 +49,7 @@ h2{
   }
 
   .results  article img{
-    width: 25%;
+    width: 200px;
     height: var(--thumbnail-heightsm);
   }
   /* #endregion Article */
