@@ -40,7 +40,7 @@ article h1{
 
 article img{
   width: 85vw;
-  max-width: 700px;
+  max-width: 750px;
   max-height: 600px;
   object-fit: cover;
 }
