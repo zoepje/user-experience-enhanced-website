@@ -1,3 +1,27 @@
+/* #region Notivication */
+#notification-container{
+  position: fixed;
+  top: 1rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  transition: transform 200ms;
+  font-family: var(--font-text);
+}
+
+#notification-container.hidden{
+  transform: translateY(-6rem);
+}
+
+#notification {
+  margin: 0;
+  padding: 0.5rem;
+  background-color: var(--accent-color4);
+  border-radius: 1rem;
+  font-weight: bold;
+}
+/* #endregion Notivication */
+
 main{
   margin: 2rem;
 }
@@ -51,15 +75,6 @@ article .shares .done{
   color: var(--color-dark-100);
 }
 /* #endregion Shares */
-
-article .notification{
-  display: none;
-  color: var(--color-dark-100);
-}
-
-article .copied{
-  display: block;
-}
 
 article .excerpt p{
   font-family: var(--font-alt);

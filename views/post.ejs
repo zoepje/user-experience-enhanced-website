@@ -4,49 +4,51 @@
 </head>
 
 <body> 
-<%- include('./partials/header') %>
-<main>
-  <article>
-    <h1><%- post[0].title.rendered %></h1>
-    <% if (post[0].yoast_head_json.og_image[0]) { %>
-      <img src="<%= post[0].yoast_head_json.og_image[0].url %>" alt="">
-    <% } else { %>
-      
-    <% } %>
+  <%- include('./partials/header') %>
+  <div id="notification-container" class="hidden">
+    <p id="notification"></p>
+  </div>
 
-    <div class="info">
-      <% if (category[0]) { %>
-        <a class="categorie" href="/categorie/<%= category[0].slug %>"><%- category[0].name %></a>
+  <main>
+    <article>
+      <h1><%- post[0].title.rendered %></h1>
+      <% if (post[0].yoast_head_json.og_image[0]) { %>
+        <img src="<%= post[0].yoast_head_json.og_image[0].url %>" alt="">
+      <% } else { %>
+        
       <% } %>
 
-      <span class="date"><%= post[0].date %></span>
+      <div class="info">
+        <% if (category[0]) { %>
+          <a class="categorie" href="/categorie/<%= category[0].slug %>"><%- category[0].name %></a>
+        <% } %>
 
-      <form action="/artikel/<%= post[0].slug %>" method="post" class="shares">
-        <input type="hidden" name="slug" value="<%= post[0].slug %>">
-        <label for="share"> <%= post[0].shares  %>x gedeeld</label>
-        <button class="deel-button" type="submit" id="share">
-          <span class="material-symbols-outlined">share_windows</span>
-          <span class="btn-label">deel</span>
-        </button>
-      </form>
+        <span class="date"><%= post[0].date %></span>
 
-      <p class="notification"> Gekopieërd!</p>
-    </div>
-
-    <div class="excerpt">
-      <%- post[0].excerpt.rendered %>
-    </div>
-
-    <section class="content">
-      <div class="read-info">
-        <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
-        <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
+        <form action="/artikel/<%= post[0].slug %>" method="post" class="shares" onsubmit="shareLink(event)">
+          <input type="hidden" name="slug" value="<%= post[0].slug %>">
+          <label for="shareBtn"> <span id="share"><%= post[0].shares  %></span>x gedeeld</label>
+          <button class="deel-button" type="submit" id="shareBtn">
+            <span class="material-symbols-outlined">share_windows</span>
+            <span class="btn-label">deel</span>
+          </button>
+        </form>
       </div>
 
-      <%- post[0].content.rendered %>
-    </section>
-  </article>
-</main>
+      <div class="excerpt">
+        <%- post[0].excerpt.rendered %>
+      </div>
+
+      <section class="content">
+        <div class="read-info">
+          <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
+          <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
+        </div>
+
+        <%- post[0].content.rendered %>
+      </section>
+    </article>
+  </main>
 
 
 <%- include('./partials/foot') %>
