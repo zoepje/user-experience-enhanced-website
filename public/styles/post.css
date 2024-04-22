@@ -1,4 +1,4 @@
-/* #region Notivication */
+/* #region Notification */
 #notification-container{
   position: fixed;
   top: 1rem;
@@ -20,7 +20,7 @@
   border-radius: 1rem;
   font-weight: bold;
 }
-/* #endregion Notivication */
+/* #endregion Notification */
 
 main{
   margin: 2rem;
@@ -168,7 +168,8 @@ article .content ul{
     opacity: 0;
   }
 
-  article .info .deel-button:hover .btn-label{
+  article .info .deel-button:hover .btn-label,
+  article .info .deel-button:focus .btn-label{
     opacity: 1;
   }
   /* #endregion Deel-button */

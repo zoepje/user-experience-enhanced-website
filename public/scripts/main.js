@@ -43,6 +43,4 @@ function shareLink(event){
   shareBtn.classList.add('done')
   setTimeout(() => shareBtn.classList.remove('done'), 2000);
 }
-
-// shareBtn.addEventListener('click', shareLink(event))
 //#endregion Share
