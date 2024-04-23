@@ -20,27 +20,28 @@ const link = encodeURI(window.location.href),
       notificationContainer = document.getElementById('notification-container'),
       notification = document.getElementById('notification');
   
-
-function betterAlert(message) { // Deze functie laat een notificatie zien
-  notificationContainer.classList.remove('hidden');
-  notification.innerText = message;
-  setTimeout(() => notificationContainer.classList.add('hidden'), 2000);
+// Notificatie 
+function betterAlert(message) {
+  notificationContainer.classList.remove('hidden'); // Haal de class hidden weg van de container
+  notification.innerText = message; // Zet de text van de functie in de notificatie
+  setTimeout(() => notificationContainer.classList.add('hidden'), 2000); // Na 2000ms zet de class hidden op container
 }      
 
+// Copy/share link
 function shareLink(event){
-  event.preventDefault();
+  event.preventDefault(); // Zorg ervoor dat je niet de pagina herlaad
 
-  fetch(window.top.location, {method: "POST"});
-  shareCount.innerText++;
+  fetch(window.top.location, {method: "POST"}); // Post naar 
+  shareCount.innerText++; // tel 1 op bij shareCount
 
-  if (navigator.share) { // deze functie wordt niet door elke browser ondersteunt
-    navigator.share({url: window.top.location});
+  if (navigator.share) { 
+    navigator.share({url: window.top.location}); // open share opties met url van deze pagina
   } else {
-    navigator.clipboard.writeText(window.top.location);
-    betterAlert('URL Gekopieërd!')
+    navigator.clipboard.writeText(window.top.location); // kopieer url van deze pagina naar clipboard
+    betterAlert('URL Gekopieërd!') // Doe deze functie met als message "URL Gekopieërd!"
   }
 
   shareBtn.classList.add('done')
-  setTimeout(() => shareBtn.classList.remove('done'), 2000);
+  setTimeout(() => shareBtn.classList.remove('done'), 2000); // Na 2000ms haal de class done van de shareBtn af
 }
 //#endregion Share

@@ -14,7 +14,6 @@
 }
 
 #notification {
-  margin: 0;
   padding: 0.5rem;
   background-color: var(--accent-color4);
   border-radius: 1rem;
