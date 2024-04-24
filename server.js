@@ -35,6 +35,7 @@ const redpersUrl = 'https://redpers.nl/wp-json/wp/v2/'
 const directusUrl = 'https://fdnd-agency.directus.app/items/redpers_shares'
 const postsUrl = redpersUrl + 'posts'
 const categoriesUrl = redpersUrl + 'categories'
+const authorUrl = redpersUrl + 'users'
 
 const categoriesData = [
   {"id": 9, "name": "Binnenland", "slug": "binnenland"},
@@ -51,7 +52,7 @@ const categoriesData = [
 app.get('/', function (request, response) {
   //fetch alleen de velden id, date, slug, title, yoast_head_json.author, yoast_head_json.og_image
   //Haal 51 per pagina op
-  fetchJson(postsUrl + '?_fields=id,date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=28').then((posts) => {
+  fetchJson(postsUrl + '?_fields=date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=28').then((posts) => {
   // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
   // HTML maken op basis van JSON data
 
@@ -103,7 +104,7 @@ app.get('/categorie/:slug', function (request, response) {
 // Maak een GET route voor de post
 app.get('/artikel/:slug', function (request, response) {
    // Haal voor deze post de velden date, title, content, excerpt, categories, yoast_head, yoast_head_json.author, jetpack_featured_media_url uit de API
-  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,content,excerpt,categories,yoast_head,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url'), 
+  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,author,content,excerpt,categories,yoast_head,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url'), 
     fetchJson(categoriesUrl + '?_fields=id,name,slug&per_page=100')]).then(([postData, categoryData]) => {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
@@ -138,6 +139,8 @@ app.get('/artikel/:slug', function (request, response) {
         newDate = day + ' ' + month + ' ' + year + ', ' + time; // Maak een nieuwe datum met "dag maand jaar tijd"
       postData[0].date = newDate // Zet waarde van de datum naar de nieuwe datum
       
+
+      console.log(postData[0].author)
       response.render('post', {post: postData, categories: categoriesData, category: filterCategorie})
     })  
   })
@@ -157,3 +160,10 @@ app.post('/artikel/:slug', (request, response) => {
   })
   response.redirect(301, '/artikel/' + request.params.slug)
 })
+
+app.get('/auteur/:slug', function (request, response) {
+  Promise.all([fetchJson(authorUrl + '?slug=' + request.params.slug), 
+    fetchJson(postsUrl + '?_fields=date,slug,title,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=30')]).then(([authorData, postData]) => {
+      response.render('author', {author: authorData, post: postData, categories: categoriesData })
+    })
+})  

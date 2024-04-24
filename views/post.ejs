@@ -41,7 +41,9 @@
 
       <section class="content">
         <div class="read-info">
-          <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
+          <p>Auteur: 
+            <a href="/auteur/<%= post[0].author %>"><strong><%= post[0].yoast_head_json.author %></strong></a>
+          </p>
           <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
         </div>
 
