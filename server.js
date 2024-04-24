@@ -51,7 +51,7 @@ const categoriesData = [
 app.get('/', function (request, response) {
   //fetch alleen de velden id, date, slug, title, yoast_head_json.author, yoast_head_json.og_image
   //Haal 51 per pagina op
-  fetchJson(postsUrl + '?_fields=id,date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=51').then((posts) => {
+  fetchJson(postsUrl + '?_fields=id,date,slug,title,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=28').then((posts) => {
   // Render home.ejs uit de views map en geef de opgehaalde data mee als variabele
   // HTML maken op basis van JSON data
 
