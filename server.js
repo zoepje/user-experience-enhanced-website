@@ -139,8 +139,6 @@ app.get('/artikel/:slug', function (request, response) {
         newDate = day + ' ' + month + ' ' + year + ', ' + time; // Maak een nieuwe datum met "dag maand jaar tijd"
       postData[0].date = newDate // Zet waarde van de datum naar de nieuwe datum
       
-
-      console.log(postData[0].author)
       response.render('post', {post: postData, categories: categoriesData, category: filterCategorie})
     })  
   })
