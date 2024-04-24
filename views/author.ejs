@@ -1,4 +1,6 @@
 <%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/card.css">
+<link rel="stylesheet" href="/styles/author.css">
 
 <%- author[0].yoast_head %>
 </head>
@@ -6,7 +8,15 @@
 <body>
   <%- include('./partials/header') %>
 
-  <h2><%= author[0].name %></h2>
+  <main>
+    <h2><%= author[0].name %></h2>
 
+    <img src="<%= author[0].avatar_urls["96"] %>" alt="avatar van <%= author[0].name %>" width="96" height="96">
 
+    <% if (posts[0]) { %>
+      <%- include('./partials/card') %>
+    <% } else {%>
+      <h3> Er zijn geen artiekelen</h3>
+    <% } %>
+  </main>
 <%- include('./partials/foot') %>

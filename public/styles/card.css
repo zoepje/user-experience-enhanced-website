@@ -1,0 +1,19 @@
+.readmore-card{
+  background-color: var(--color-light);
+  margin: 1rem;
+  border: var(--border);
+  max-width: 250px;
+}
+
+.readmore-card img{
+  width: var(--thumbnail-width);
+  height: var(--thumbnail-height);
+  object-fit: cover;
+  object-position: center;
+  border-bottom: var(--border);
+}
+
+.frontpage-card h2{
+  padding: 0 var(--padding);
+  height: var(--thumbnail-height);
+}

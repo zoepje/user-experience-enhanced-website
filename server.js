@@ -103,9 +103,10 @@ app.get('/categorie/:slug', function (request, response) {
 
 // Maak een GET route voor de post
 app.get('/artikel/:slug', function (request, response) {
-   // Haal voor deze post de velden date, title, content, excerpt, categories, yoast_head, yoast_head_json.author, jetpack_featured_media_url uit de API
-  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,author,content,excerpt,categories,yoast_head,yoast_head_json.author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url'), 
-    fetchJson(categoriesUrl + '?_fields=id,name,slug&per_page=100')]).then(([postData, categoryData]) => {
+   // Haal voor deze post alleen deze velden op
+  Promise.all([fetchJson(postsUrl + '/?slug=' + request.params.slug + '&_fields=date,slug,title,author,content,excerpt,categories,yoast_head,yoast_head_json.twitter_misc,yoast_head_json.og_image'), 
+    fetchJson(categoriesUrl + '?_fields=id,name,slug&per_page=100'),
+    fetchJson(authorUrl + '?_fields=id,slug,name&per_page=100')]).then(([postData, categoryData, authorData]) => {
     // Render post.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
     // HTML maken op basis van JSON data
     
@@ -127,6 +128,10 @@ app.get('/artikel/:slug', function (request, response) {
         return category.id == postData[0].categories[0]
       })
 
+      let filterAuthor = authorData.filter(author =>{
+        return author.id == postData[0].author
+      })
+
       // Zet de string data uit API om naar een datum die er mooi uit ziet
       const parsedDate = new Date(postData[0].date), // Haal de string date van de post op
         day = parsedDate.getDate(), // Haal de dag uit de string
@@ -139,7 +144,7 @@ app.get('/artikel/:slug', function (request, response) {
         newDate = day + ' ' + month + ' ' + year + ', ' + time; // Maak een nieuwe datum met "dag maand jaar tijd"
       postData[0].date = newDate // Zet waarde van de datum naar de nieuwe datum
       
-      response.render('post', {post: postData, categories: categoriesData, category: filterCategorie})
+      response.render('post', {post: postData, categories: categoriesData, category: filterCategorie, author: filterAuthor})
     })  
   })
 })
@@ -161,7 +166,23 @@ app.post('/artikel/:slug', (request, response) => {
 
 app.get('/auteur/:slug', function (request, response) {
   Promise.all([fetchJson(authorUrl + '?slug=' + request.params.slug), 
-    fetchJson(postsUrl + '?_fields=date,slug,title,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=30')]).then(([authorData, postData]) => {
-      response.render('author', {author: authorData, post: postData, categories: categoriesData })
+    fetchJson(postsUrl + '?_fields=date,slug,title,author,yoast_head_json.twitter_misc,yoast_head_json.og_image,jetpack_featured_media_url&per_page=30')]).then(([authorData, postData]) => {
+      
+      // Voor alle posts
+      // Zet de string data uit API om naar een datum die er mooi uit ziet
+      for (var i=0; i < postData.length; i++) {
+        const parsedDate = new Date(postData[i].date), // Haal de string date van de post op
+              day = parsedDate.getDate(), // Haal de dag uit de string
+              options = {month: "short"}, // De maand moet kort geschreven zijn
+              month = Intl.DateTimeFormat("nl-NL", options).format(parsedDate), // Haal de maand op en zet het in woordvorm in de taal nederlands
+              newDate = day + ' ' + month; // Maak een nieuwe datum met "dag maand"
+        postData[i].date = newDate // Zet waarde van de datum naar de nieuwe datum
+      }
+
+      let filterPost = postData.filter(post =>{
+        return post.author == authorData[0].id
+      })
+
+      response.render('author', {author: authorData, posts: filterPost, categories: categoriesData })
     })
 })  
