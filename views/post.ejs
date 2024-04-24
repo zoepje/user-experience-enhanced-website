@@ -40,12 +40,22 @@
       </div>
 
       <section class="content">
-        <div class="read-info">
-          <p>Auteur: 
-            <% if (author[0]) { %>
-              <a href="/auteur/<%= author[0].slug %>"><strong><%= author[0].name %></strong></a>
-            <% } %>
-          </p>
+        <div class="read-info">   
+          <% if (author[0]) { %>
+            <div class="auteur-container">
+              <section class="popup">
+                <img src="<%= author[0].avatar_urls["96"] %>" alt="avatar van <%= author[0].name %>" width="96" height="96">
+                <h3><%= author[0].name %></h3>
+                <p><%= author[0].description %></p>
+              </section>
+              
+              <p>Auteur:
+                <a href="/auteur/<%= author[0].slug %>"><strong><%= author[0].name %></strong></a>
+              </p>
+            </div>
+          <% } else { %>
+            <p>Auteur: <strong><%= post[0].yoast_head_json.author %></strong></p>
+          <% } %>
           <p>Leestijd: <strong><%= post[0].yoast_head_json.twitter_misc["Geschatte leestijd"] %></strong></p>
         </div>
 

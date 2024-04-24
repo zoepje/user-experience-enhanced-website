@@ -95,12 +95,27 @@ article .content .read-info{
 
 article .content .read-info p{
   border-bottom: var(--border);
-  text-transform: uppercase;
   padding: 0;
 }
 
-article .content .read-info p:nth-of-type(1){
+article .content .read-info p:nth-of-type(2n){
   border-top: var(--border);
+}
+
+article .content .read-info .popup{
+  visibility: hidden;
+  position: absolute;
+  top: auto;
+  z-index: 1;
+  background-color: var(--color-light-100);
+}
+
+article .content .read-info .popup p{
+  border: none;
+}
+
+article .content .read-info .auteur-container:hover .popup{
+  visibility: visible;
 }
 /* #region Read-info */
 
