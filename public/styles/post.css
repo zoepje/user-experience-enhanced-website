@@ -102,6 +102,7 @@ article .content .read-info p:nth-of-type(2n){
   border-top: var(--border);
 }
 
+/* #region Popup */
 article .content .read-info .auteur-container{
   position: relative;
 }
@@ -111,20 +112,27 @@ article .content .read-info .popup{
   position: absolute;
   z-index: 1;
   background-color: var(--color-light-100);
+  display: flex;
   width: 500px;
   bottom: 100%;
   left: 50%;
   margin-left: -300px;
 }
 
+article .content .read-info .popup img{
+  width: 96px;
+}
+
 article .content .read-info .popup p{
   border: none;
+  font-size: var(--font-size-small);
 }
 
 article .content .read-info .auteur-container:hover .popup{
   visibility: visible;
 }
-/* #region Read-info */
+/* #endregion Popup */
+/* #endregion Read-info */
 
 article .content h4, 
 article .content p,
