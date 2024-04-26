@@ -36,7 +36,6 @@ const directusUrl = 'https://fdnd-agency.directus.app/items/redpers_shares'
 const postsUrl = redpersUrl + 'posts'
 const categoriesUrl = redpersUrl + 'categories'
 const authorUrl = redpersUrl + 'users'
-
 const categoriesData = [
   {"id": 9, "name": "Binnenland", "slug": "binnenland"},
   {"id": 1010, "name": "Buitenland", "slug": "buitenland"}, 
