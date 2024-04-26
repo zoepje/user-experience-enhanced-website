@@ -1,6 +1,5 @@
 //#region Menu
 const menuBtn = document.querySelector('.menu-button'),
-      // closeBtn = document.querySelector('.close-button'),
       nav = document.querySelector('nav'),
       header = document.querySelector('header');
 
