@@ -13,7 +13,7 @@
   border-bottom: var(--border);
 }
 
-.frontpage-card h2{
+.readmore-card h2{
   padding: 0 var(--padding);
   height: var(--thumbnail-height);
 }
