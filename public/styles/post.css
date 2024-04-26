@@ -111,13 +111,24 @@ article .content .read-info .popup{
   visibility: hidden;
   position: absolute;
   z-index: 1;
-  background-color: var(--color-light-100);
+  background-color: var(--accent-color3);
   display: flex;
   width: 500px;
   height: 175px;
   bottom: 100%;
   left: 50%;
   margin-left: -300px;
+}
+
+article .content .read-info .popup::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: var(--accent-color3) transparent transparent transparent;
 }
 
 article .content .read-info .popup img{
