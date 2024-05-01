@@ -141,6 +141,7 @@ article .content .read-info .popup section{
   padding: 1rem;
   width: 65%;
 }
+
 article .content .read-info .popup section h3{
   font-family: var(--font-alt);
 }
@@ -237,3 +238,11 @@ article .content ul{
   /* #endregion Deel-button */
   /* #endregion Article */
 }
+
+/* #region Keyframes */
+@keyframes popup{
+  0% {
+    top: 0;
+  }
+}
+/* #endregion Keyframes */
