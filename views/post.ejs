@@ -44,7 +44,11 @@
           <% if (author[0]) { %>
             <div class="auteur-container">
               <div class="popup">
-                <img src="<%= author[0].avatar_urls["96"] %>" alt="avatar van <%= author[0].name %>" width="96" height="96">
+                <% if (author[0].avatar_urls) { %>
+                  <img src="<%= author[0].avatar_urls["96"] %>" alt="avatar van <%= author[0].name %>" width="96" height="96">
+                <% } else { %>
+                  <img src="/assets/errorimg.png" alt="kan avatar niet laden" width="96" height="96">
+                <% } %> 
                 <section>
                   <h3><%= author[0].name %></h3>
                   <p><%- author[0].description %></p>
