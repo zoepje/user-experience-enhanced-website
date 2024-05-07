@@ -28,9 +28,7 @@ function betterAlert(message) {
 
 // Copy/share link
 function shareLink(event){
-  event.preventDefault(); // Zorg ervoor dat je niet de pagina herlaad
-
-  fetch(window.top.location, {method: "POST"}); // Post naar 
+  fetch(window.top.location, {method: "POST"}); // Post naar API 
   shareCount.innerText++; // tel 1 op bij shareCount
 
   if (navigator.share) { 
@@ -42,5 +40,7 @@ function shareLink(event){
 
   shareBtn.classList.add('done')
   setTimeout(() => shareBtn.classList.remove('done'), 2000); // Na 2000ms haal de class done van de shareBtn af
+
+  event.preventDefault(); // Zorg ervoor dat je niet de pagina herlaad
 }
 //#endregion Share
