@@ -56,8 +56,9 @@ Je kunt hier de website bezoeken🌐 https://red-pers-user-experience.onrender.c
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
 Ik heb mij deze sprint gefocust op deze userstories:
-1. https://github.com/fdnd-agency/red-pers/issues/1
-1. Als potentieel werkgever wil ik een overzicht van de artikelen van een auteur kunnen zien, zodat ik het volledige werk van een auteur kan beoordelen. https://github.com/fdnd-agency/red-pers/issues/4
+1. https://github.com/fdnd-agency/red-pers/issues/1. Dit heb ik gedaan door een popup te maken voor als je over de auteur hovert.
+1. https://github.com/fdnd-agency/red-pers/issues/4. Ik ben begonnen met een design voor de auteurpagina maar deze heb ik nog niet kunnen implementeren.
+
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
