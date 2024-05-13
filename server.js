@@ -24,9 +24,7 @@ app.use(express.urlencoded({extended: true}))
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 
-// Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
@@ -148,7 +146,7 @@ app.get('/artikel/:slug', function (request, response) {
       // Zet de string data uit API om naar een datum die er mooi uit ziet
       eval(date.get('full-date'))
       
-      response.render('post', {post: postData, categories: categoriesData, category: filterCategorie, author: filterAuthor})
+      response.render('article', {post: postData, categories: categoriesData, category: filterCategorie, author: filterAuthor})
     })  
   })
 })
